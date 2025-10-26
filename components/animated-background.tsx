@@ -1,10 +1,14 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { memo } from "react";
+import { motion } from "framer-motion";
 
-export default function AnimatedBackground() {
+// Reduced particle count for better performance
+const PARTICLE_COUNT = 8;
+
+const AnimatedBackground = memo(() => {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Blue blob */}
       <motion.div
         className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-400 to-emerald-200 rounded-full blur-2xl opacity-50"
@@ -16,7 +20,7 @@ export default function AnimatedBackground() {
         }}
         transition={{
           duration: 20,
-          repeat: Number.POSITIVE_INFINITY,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
       />
@@ -32,7 +36,7 @@ export default function AnimatedBackground() {
         }}
         transition={{
           duration: 25,
-          repeat: Number.POSITIVE_INFINITY,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
       />
@@ -48,7 +52,7 @@ export default function AnimatedBackground() {
         }}
         transition={{
           duration: 30,
-          repeat: Number.POSITIVE_INFINITY,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
       />
@@ -63,37 +67,22 @@ export default function AnimatedBackground() {
         }}
         transition={{
           duration: 22,
-          repeat: Number.POSITIVE_INFINITY,
+          repeat: Infinity,
           ease: "easeInOut",
         }}
       />
 
-      <motion.div
-        className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-br from-emerald-300 to-emerald-200 rounded-full blur-2xl opacity-25"
-        animate={{
-          x: [0, 70, -50, 0],
-          y: [0, -40, 60, 0],
-          scale: [1, 0.95, 1.1, 1],
-        }}
-        transition={{
-          duration: 28,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
+      {/* Animated grid overlay - static SVG for better performance */}
+      <div 
+        className="absolute inset-0 w-full h-full opacity-10"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgb(71 85 105)' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: '40px 40px'
         }}
       />
 
-      {/* Animated grid overlay */}
-      <svg className="absolute inset-0 w-full h-full opacity-10 text-slate-600" width="100%" height="100%">
-        <defs>
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
-
-      {/* Floating particles */}
-      {[...Array(12)].map((_, i) => (
+      {/* Reduced floating particles with better performance */}
+      {Array.from({ length: PARTICLE_COUNT }, (_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-slate-500 rounded-full"
@@ -109,38 +98,15 @@ export default function AnimatedBackground() {
           }}
           transition={{
             duration: 5 + i * 0.8,
-            repeat: Number.POSITIVE_INFINITY,
+            repeat: Infinity,
             ease: "easeInOut",
           }}
         />
       ))}
-
-      {/* Subtle gradient lines */}
-      <motion.div
-        className="absolute top-0 left-1/4 w-px h-1/2 bg-gradient-to-b from-blue-400 to-transparent opacity-20"
-        animate={{
-          opacity: [0.1, 0.2, 0.1],
-          x: [0, 10, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="absolute top-1/2 right-1/3 w-1/3 h-px bg-gradient-to-r from-emerald-400 to-transparent opacity-20"
-        animate={{
-          opacity: [0.1, 0.2, 0.1],
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
     </div>
-  )
-}
+  );
+});
+
+AnimatedBackground.displayName = "AnimatedBackground";
+
+export default AnimatedBackground;
