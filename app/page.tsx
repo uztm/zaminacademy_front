@@ -72,7 +72,7 @@ export default function Home() {
           >
             <Button
               variant="outline"
-              className="rounded-full px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-semibold border-slate-300 hover:border-yellow-400 hover:bg-yellow-50 transition-colors"
+              className="rounded-full px-6 sm:px-8 py-4 sm:py-6 text-sm sm:text-base font-semibold border-slate-300 hover:border-yellow-400 bg-transparent hover:cursor-pointer transition-colors"
             >
               Explore Courses
             </Button>
