@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "@/components/animated-background";
 import Navbar from "@/components/layout/navbar";
-import Partners from "@/components/core/partners";
 
 export default function Home() {
   return (
