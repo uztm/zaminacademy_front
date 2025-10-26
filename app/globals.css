@@ -121,8 +121,7 @@
   }
 }
 
-
-@keyframes scroll {
+@keyframes scrollLoop {
   0% {
     transform: translateX(0);
   }
@@ -132,7 +131,8 @@
 }
 
 .animate-scroll {
-  animation: scroll 25s linear infinite;
+  animation: scrollLoop 30s linear infinite;
+  will-change: transform;
 }
 
 
