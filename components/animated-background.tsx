@@ -23,7 +23,7 @@ export default function AnimatedBackground() {
 
       {/* Emerald blob */}
       <motion.div
-        className="absolute top-1/2 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400 to-blue-200 rounded-full blur-2xl opacity-45"
+        className="absolute top-1/2 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400 to-blue-200 rounded-full blur-2xl opacity-25"
         animate={{
           x: [0, -80, 40, 0],
           y: [0, -50, 70, 0],
@@ -69,7 +69,7 @@ export default function AnimatedBackground() {
       />
 
       <motion.div
-        className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-br from-emerald-300 to-emerald-200 rounded-full blur-2xl opacity-35"
+        className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-br from-emerald-300 to-emerald-200 rounded-full blur-2xl opacity-25"
         animate={{
           x: [0, 70, -50, 0],
           y: [0, -40, 60, 0],
